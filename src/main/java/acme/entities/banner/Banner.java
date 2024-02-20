@@ -1,11 +1,9 @@
 
-package acme.entities.objective;
+package acme.entities.banner;
 
-import java.time.Duration;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -20,34 +18,26 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
-public class Objective extends AbstractEntity {
+public class Banner extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Past
 	@NotNull
-	private Date				instantiationMoment;
+	private Date				instantiationUpdateMoment;
+
+	//private Date				displayPeriod;
+
+	@URL
+	@NotBlank
+	private String				picture;
 
 	@NotBlank
 	@Length(max = 76)
-	@NotNull
-	private String				title;
-
-	@NotBlank
-	@Length(max = 101)
-	private String				description;
-
-	@NotNull
-	private Priority			priority;
-
-	@NotNull
-	private Boolean				status;
-
-	@NotNull
-	@FutureOrPresent
-	private Duration			duration;
+	private String				slogan;
 
 	@URL
+	@NotBlank
 	private String				link;
+
 }
