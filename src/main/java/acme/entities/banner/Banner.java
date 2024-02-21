@@ -4,6 +4,8 @@ package acme.entities.banner;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -20,20 +22,25 @@ import lombok.Setter;
 @Setter
 public class Banner extends AbstractEntity {
 
+	// Serialisation identifier -----------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
+	// Attributes -------------------------------------------------------------
+
+	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull
 	private Date				instantiationUpdateMoment;
 
-	//private Date				displayPeriod;
+	private Date				displayPeriod;
 
 	@URL
 	@NotBlank
 	private String				picture;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				slogan;
 
 	@URL
