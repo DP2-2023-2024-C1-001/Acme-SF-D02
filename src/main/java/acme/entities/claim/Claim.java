@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -34,20 +36,21 @@ public class Claim extends AbstractEntity {
 	@NotBlank
 	private String				code;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				heading;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				description;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				department;
 
 	@Email
